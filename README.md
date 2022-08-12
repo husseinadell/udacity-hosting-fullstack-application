@@ -26,7 +26,23 @@ The project can run but you need some environment variables and configured AWS c
 ### Development Setup
 
 1. Clone the project - `git clone https://github.com/Storm-Maker/Hosting-Fullstack-AWS.git` and open two terminals fron the root directory of the project.
-2. Run the following commands:
+2. Setup the following variables in the .env file or in the cloud environments and add these variabes to the `.env` file.
+
+```bash
+PORT=8080
+POSTGRES_HOST={database_ip_address}
+POSTGRES_PORT={database_port}
+POSTGRES_DB={database_name}
+POSTGRES_USERNAME={database_username}
+POSTGRES_PASSWORD={database_password}
+URL={url}
+JWT_SECRET={any_passphrase}
+AWS_REGION={us}east-1>
+AWS_PROFILE={profile}
+AWS_BUCKET={bucket_name}
+```
+
+3. Run the following commands:
 
 ```bash
 # terminal 1
