@@ -1,10 +1,11 @@
 # Udagram
 
-- [Dependencies](#dependencies)
+- [App Dependencies](#app-dependencies)
+- [Infrastructur](#infrastructur)
 - [AWS Cloud Setup](#aws-cloud-setup)
 - [Environment Variables](#environment-variables)
 - [Pipeline](#pipeline)
-- [CircleCi](#circleci)
+- [Pipeline Process](#pipeline-process)
 - [Testing](#testing)
   - [Unit Tests:](#unit-tests)
   - [End to End Tests:](#end-to-end-tests)
@@ -12,7 +13,7 @@
 
 ---
 
-### Dependencies
+### App Dependencies
 
 ```
 - Node v14.15.1 (LTS) or more recent.
@@ -26,6 +27,15 @@
 - AWS CLI v2
 
 - AWS EB CLI
+```
+
+### Infrastructure
+Our project relies on three main services: 
+```
+- AWS Elastic Beanstalk
+- AWS RDS Postgres
+- AWS S3 Bucket
+- AWS CLI
 ```
 
 ### AWS Cloud Setup
@@ -57,7 +67,7 @@ AWS_BUCKET={bucket_name}
 ```
 
 ## Pipeline
-
+The main `package.json` file is used for controing the pipeline process.
 From the root of the project:
 
 - `npm run frontend:install` - install frontend dependencies.
@@ -68,8 +78,8 @@ From the root of the project:
 - `npm run backend:build` - To transpile the Typescript/Backend.
 - `npm run backend:deploy` - To deploy the project to EB using `./udagram-api/bin/deploy.sh` deploy script.
 
-## CircleCi
-
+## Pipeline Process
+Using CircleCI, we can build the project and deploy it to AWS.
 The order of the run jobs:
 
 - Set Env Variables.
@@ -86,6 +96,7 @@ The order of the run jobs:
   - Change The main entry point in package.json.
   - Transpile the typescript/ build the app.
   - Install AWS Elastic Beanstalk CLI.
+  - Set Env variables on eb. 
   - Deploy app to AWS Elastic Beanstalk.
 
 ## Testing

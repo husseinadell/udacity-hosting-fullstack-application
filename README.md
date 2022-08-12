@@ -50,7 +50,7 @@ npm start
 
 ## Documentation
 
-- Detailed Documentation is provided in `./docs/README.md`
+- Detailed Documentation (Infrastructure, App dependencies, Pipeline process) is provided in `./docs/README.md`
 - Screenshots of the AWS configurations and the CircleCI are provided in `./docs/screenshots/`
 - Architecture Diagrams of the AWS and the Pipeline are provided in `./docs/architecture-diagrams/`
 
