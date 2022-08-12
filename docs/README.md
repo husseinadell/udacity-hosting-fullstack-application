@@ -15,27 +15,27 @@
 
 ### App Dependencies
 
+Note: it's recommended to use Linux operating system for the project.
+
 ```
 - Node v14.15.1 (LTS) or more recent.
-
 - npm 6.14.8 (LTS) or more recent.
-
+- Local postgresql database for local development (you need to set env Variables).
 - AWS RDS database instance running Postgres.
-
 - AWS S3 bucket for Frontend.
-
 - AWS CLI v2
-
 - AWS EB CLI
 ```
 
 ### Infrastructure
-Our project relies on three main services: 
+
+The project relies on four main services:
+
 ```
-- AWS Elastic Beanstalk
-- AWS RDS Postgres
-- AWS S3 Bucket
-- AWS CLI
+- AWS Elastic Beanstalk for managing the environment.
+- AWS RDS Postgres for the database.
+- AWS S3 Bucket for the frontend & images.
+- CircleCI for the continuous integration.
 ```
 
 ### AWS Cloud Setup
@@ -43,9 +43,7 @@ Our project relies on three main services:
 - RDS - Database Host: database-2.c1pnjb9pfgg5.us-east-1.rds.amazonaws.com
 - RDS - Database Port: 5432
 - RDS - Database Name: postgres
-
 - S3 Endpoint - Frontend: http://udagram-fend-proj.s3-website-us-east-1.amazonaws.com
-
 - Elastic Beanstalk URL - Backend: http://udagramproject-env.eba-gttbt3pw.us-east-1.elasticbeanstalk.com/
 
 ## Environment Variables
@@ -67,6 +65,7 @@ AWS_BUCKET={bucket_name}
 ```
 
 ## Pipeline
+
 The main `package.json` file is used for controing the pipeline process.
 From the root of the project:
 
@@ -79,7 +78,21 @@ From the root of the project:
 - `npm run backend:deploy` - To deploy the project to EB using `./udagram-api/bin/deploy.sh` deploy script.
 
 ## Pipeline Process
-Using CircleCI, we can build the project and deploy it to AWS.
+
+For development purposes, the pipeline is executed in the following order:
+
+- Create a postgress database instance (you can use enither docker, or local postgresql).
+- Confugure the environment variables in the .env file (set your postgres credentials).
+- Setup frontend dependencies `npm run frontend:install`.
+- Setup backend dependencies `npm run backend:install`.
+- Start the backend server `cd udagram-api && npm run dev`.
+- On another terminal, Start the frontend server `cd udagram-frontend && npm start`.
+- Open the frontend in a browser.
+- And now you can start developing.
+
+For Production deployment, using CircleCI, we can build the project and deploy it to AWS.
+Once your changes are pushed to the main branch, circleci will execute the following steps (you just watch the build process):
+
 The order of the run jobs:
 
 - Set Env Variables.
@@ -96,7 +109,7 @@ The order of the run jobs:
   - Change The main entry point in package.json.
   - Transpile the typescript/ build the app.
   - Install AWS Elastic Beanstalk CLI.
-  - Set Env variables on eb. 
+  - Set Env variables on eb.
   - Deploy app to AWS Elastic Beanstalk.
 
 ## Testing
