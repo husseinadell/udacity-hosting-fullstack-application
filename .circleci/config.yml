@@ -7,38 +7,38 @@ orbs:
 
 jobs:
   build-and-deploy:
-  docker:
-    - image: 'cimg/base:stable'
-  steps:
-    - node/install
-    - checkout
-    - aws-cli/setup
-    - aws-elastic-beanstalk/setup
-    - run:
-      name: Install frontend dependencies
-      command: |
-        npm run frontend:install
-    - run:
-      name: Build frontend
-      command: |
-        npm run frontend:build
-    - run:
-      name: Deploy frontend
-      command: |
-        npm run frontend:deploy
-    - run:
-      name: install backend dependencies
-      command: |
-        npm run backend:install
-    - run:
-      name: edit entrypoint script
-      command: |
-        npm run backend:modify-entrypoint
-    - run:
-      name: build backend
-      command: |
-        npm run backend:build
-    - run:
-      name: deploy backend
-      command: |
-        npm run backend:deploy
+    docker:
+      - image: "cimg/base:stable"
+    steps:
+      - node/install
+      - checkout
+      - aws-cli/setup
+      - aws-elastic-beanstalk/setup
+      - run:
+        name: Install frontend dependencies
+        command: |
+          npm run frontend:install
+      - run:
+        name: Build frontend
+        command: |
+          npm run frontend:build
+      - run:
+        name: Deploy frontend
+        command: |
+          npm run frontend:deploy
+      - run:
+        name: install backend dependencies
+        command: |
+          npm run backend:install
+      - run:
+        name: edit entrypoint script
+        command: |
+          npm run backend:modify-entrypoint
+      - run:
+        name: build backend
+        command: |
+          npm run backend:build
+      - run:
+        name: deploy backend
+        command: |
+          npm run backend:deploy
