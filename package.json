@@ -5,6 +5,7 @@
         "frontend:deploy": "cd udagram-frontend && npm run deploy",
         "backend:install": "cd udagram-api && npm install",
         "backend:build": "cd udagram-api && npm run build",
+        "backend:setenv": "cd udagram-api && npm run setenv",
         "backend:deploy": "cd udagram-api && npm run deploy",
         "backend:aws-eb": "cd udagram-api && npm run aws-eb",
         "backend:modify-entrypoint": "cd udagram-api && npm run change-main",
