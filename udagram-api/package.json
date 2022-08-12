@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "dev": "npm run reset-main && ts-node-dev --respawn --transpile-only ./src/server.ts",
     "prod": "tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
     "build": "npm run clean && tsc && cp -rf src/config www/config && cp .npmrc www/.npmrc && cp package.json www/package.json && cd www && zip -r Archive.zip . && cd ..",
@@ -14,8 +14,10 @@
     "deploy": "chmod +x bin/deploy.sh && bin/deploy.sh",
     "aws-eb": "chmod +x bin/aws-eb.sh && bin/aws-eb.sh",
     "change-main": "npm run install-jk-sponge && npm run edit-main-entry-point",
+    "reset-main": "npm run install-jk-sponge && npm run reset-main-entry-point",
     "install-jk-sponge": "chmod +x bin/install-jk-sponge.sh && bin/install-jk-sponge.sh",
-    "edit-main-entry-point": "chmod +x bin/edit-main-entry.sh && bin/edit-main-entry.sh"
+    "edit-main-entry-point": "chmod +x bin/edit-main-entry.sh && bin/edit-main-entry.sh",
+    "reset-main-entry-point": "chmod +x bin/reset-main-entry.sh && bin/reset-main-entry.sh"
   },
   "keywords": [],
   "author": "Gabriel Ruttner",
