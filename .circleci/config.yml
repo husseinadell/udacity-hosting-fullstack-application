@@ -15,30 +15,30 @@ jobs:
       - aws-cli/setup
       - aws-elastic-beanstalk/setup
       - run:
-        name: Install frontend dependencies
-        command: |
-          npm run frontend:install
+          name: Install frontend dependencies
+          command: |
+            npm run frontend:install
       - run:
-        name: Build frontend
-        command: |
-          npm run frontend:build
+          name: Build frontend
+          command: |
+            npm run frontend:build
       - run:
-        name: Deploy frontend
-        command: |
-          npm run frontend:deploy
+          name: Deploy frontend
+          command: |
+            npm run frontend:deploy
       - run:
-        name: install backend dependencies
-        command: |
-          npm run backend:install
+          name: install backend dependencies
+          command: |
+            npm run backend:install
       - run:
-        name: edit entrypoint script
-        command: |
-          npm run backend:modify-entrypoint
+          name: edit entrypoint script
+          command: |
+            npm run backend:modify-entrypoint
       - run:
-        name: build backend
-        command: |
-          npm run backend:build
+          name: build backend
+          command: |
+            npm run backend:build
       - run:
-        name: deploy backend
-        command: |
-          npm run backend:deploy
+          name: deploy backend
+          command: |
+            npm run backend:deploy
